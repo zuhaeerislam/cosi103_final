@@ -265,7 +265,7 @@ app.post('/courses/byName',
   }
 )
 
-app.use(isLoggedIn)
+// app.use(isLoggedIn)
 
 app.get('/addCourse/:courseId',
   // add a course to the user's schedule

@@ -16,7 +16,6 @@
 
 const express = require('express');
 const router = express.Router();
-const bcrypt = require('bcrypt');
 const saltRounds = 10;
 const User = require('../models/User')
 
@@ -48,62 +47,62 @@ router.get("/login", (req,res) => {
   res.render("login")
 })
 
-router.post('/login',
-  async (req,res,next) => {
-    try {
-      const {username,passphrase} = req.body
-      const user = await User.findOne({username:username})
-      const isMatch = await bcrypt.compare(passphrase,user.passphrase );
+// router.post('/login',
+//   async (req,res,next) => {
+//     try {
+//       const {username,passphrase} = req.body
+//       const user = await User.findOne({username:username})
+//       const isMatch = await bcrypt.compare(passphrase,user.passphrase );
 
-      if (isMatch) {
-        req.session.username = username //req.body
-        req.session.user = user
-        res.redirect('/')
-      } else {
-        req.session.username = null
-        req.session.user = null
-        res.redirect('/login')
-      }
-    }catch(e){
-      next(e)
-    }
-  })
+//       if (isMatch) {
+//         req.session.username = username //req.body
+//         req.session.user = user
+//         res.redirect('/')
+//       } else {
+//         req.session.username = null
+//         req.session.user = null
+//         res.redirect('/login')
+//       }
+//     }catch(e){
+//       next(e)
+//     }
+//   })
 
-router.post('/signup',
-  async (req,res,next) =>{
-    try {
-      const {username,passphrase,passphrase2,age} = req.body
-      if (passphrase != passphrase2){
-        res.redirect('/login')
-      }else {
-        const encrypted = await bcrypt.hash(passphrase, saltRounds);
+// router.post('/signup',
+//   async (req,res,next) =>{
+//     try {
+//       const {username,passphrase,passphrase2,age} = req.body
+//       if (passphrase != passphrase2){
+//         res.redirect('/login')
+//       }else {
+//         const encrypted = await bcrypt.hash(passphrase, saltRounds);
 
-        // check to make sure that username is not already taken!!
-        const duplicates = await User.find({username})
+//         // check to make sure that username is not already taken!!
+//         const duplicates = await User.find({username})
         
-        if (duplicates.length>0){
-          // it would be better to render a page with an error message instead of this plain text response
-          res.send("username has already been taken, please go back and try another username")
-        }else {
-          // the username has not been taken so create a new user and store it in the database
-          const user = new User(
-            {username:username,
-             passphrase:encrypted,
-             age:age
-            })
+//         if (duplicates.length>0){
+//           // it would be better to render a page with an error message instead of this plain text response
+//           res.send("username has already been taken, please go back and try another username")
+//         }else {
+//           // the username has not been taken so create a new user and store it in the database
+//           const user = new User(
+//             {username:username,
+//              passphrase:encrypted,
+//              age:age
+//             })
           
-          await user.save()
-          req.session.username = user.username
-          req.session.user = user
-          res.redirect('/')
-        }
+//           await user.save()
+//           req.session.username = user.username
+//           req.session.user = user
+//           res.redirect('/')
+//         }
         
         
-      }
-    }catch(e){
-      next(e)
-    }
-  })
+//       }
+//     }catch(e){
+//       next(e)
+//     }
+//   })
 
 router.get('/logout', (req,res) => {
   req.session.destroy()
