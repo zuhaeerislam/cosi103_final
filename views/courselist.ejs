@@ -1,0 +1,34 @@
+<h1>The Noodles are ...</h1>
+<hr>
+<table class="table table-bordered table-striped">
+    <thead>
+        <tr>
+            <th>Brand</th>
+            <th>Variety</th>
+            <th>Style</th>
+            <th>Country</th>
+            <th>Stars</th>
+        </tr>
+    </thead>
+    <tbody></tbody>
+    <% for (rating of ratings) {
+        const brand = rating['Brand'];
+        const variety = rating['Variety'];
+        const style = rating['Style'];
+        const country= rating['Country'];
+        const stars= rating['Stars'];
+         %>
+      <tr class="mb-2"> 
+        <td><%= brand %></td>
+        <td><%= variety %></td>
+        <td><%= style %></td>
+        <td><%= country %></td>
+        <td><%= stars %></td>
+    </tr>
+    <% } %>
+    </tbody>
+</table>
+
+<pre>
+   
+</pre>

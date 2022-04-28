@@ -1,0 +1,39 @@
+<div class="jumbotron">
+    <h1>Noodle Lookup</h1>
+    <p></p>
+</div>
+
+<p class="p-3 m-3 border border-primary bg-light">
+    This website enables users to look for Noodles based on their preferences!
+</p>
+
+<% if (true || loggedIn) {%> 
+    <br> 
+    <form method="post" action="/ratings/byStyle">
+        Noodles by Style: 
+          <input type="text" name="style" 
+                 placeholder="e.g. Bowl">
+        <input type="submit">
+    </form>
+    <br>
+    <form method="post" action="/ratings/byCountry">
+        Noodles by Country: 
+        <input type="text" name="country" 
+               placeholder="e.g. Malaysia">
+        <input type="submit">
+    </form>
+    <br>
+    <form method="post" action="/ratings/byBrand">
+        Noodles by Brand: 
+          <input type="text" name="brand" 
+                 placeholder="e.g. Nongshim">
+        <input type="submit">
+    </form>
+    <br>
+    <form method="post" action="/ratings/byStars">
+        Noodles by Rating: 
+          <input type="text" name="stars" 
+                 placeholder="e.g. 5">
+        <input type="submit">
+    </form>
+<% } %>
