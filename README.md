@@ -16,8 +16,7 @@ Finally, the user will be rendered results that will look the following table:
 
 Here's a short video:
 
-![video tutorial](https://brandeis.zoom.us/rec/share/VZ290KFoMCqjF6NGBas1PuZt8kq8idl46-TinToaJEUonRSrF36btOP3PhzBtbjd.oOPxpzd1VyuEhNx8?startTime=1651787269000)
-
+[![Watch the Video Tutorial!](https://brandeis.zoom.us/rec/share/VZ290KFoMCqjF6NGBas1PuZt8kq8idl46-TinToaJEUonRSrF36btOP3PhzBtbjd.oOPxpzd1VyuEhNx8?startTime=1651787269000)
 
 ## Where to Download From?
 
